@@ -1,14 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-## Free themes for Bootstrap
-
-https://bootswatch.com/
-
-## Accessible data source for all the data from the Star Wars canon universe
-
-https://swapi.co/
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -34,3 +26,24 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
+
+
+## Free themes for Bootstrap
+
+https://bootswatch.com/
+
+## Accessible data source for all the data from the Star Wars canon universe
+
+https://swapi.co/
+
+## Accessible data source for the Star Wars canon universe pictures
+
+https://starwars-visualguide.com/#/
+
+## regex generator
+
+https://regex101.com/
+
+## spiner generator
+
+https://loading.io/
