@@ -7,11 +7,11 @@ class SwapiService {
     async  getResource(url) {
         const res = await fetch(`${this._apiBase}${url}`);
         //404 is not error (the response from the server is received)
+        
         if (!res.ok) {
             throw new Error(`Could not fetch  ${url}` + `, received ${res.status}`)
         }
         const body = await res.json();
-        // console.log(body);
         return body;
     }
 
