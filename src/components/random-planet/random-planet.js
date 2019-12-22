@@ -15,7 +15,11 @@ export default class RandomPlanet extends Component {
 
     constructor() {
         super();
-        this.updatePlanet();
+    }
+    
+    componentDidMount(){
+        this.interval = setInterval(this.updatePlanet, 8000);
+        // clearInterval(this.interval);
     }
 
     onPlanetLoaded = (planet) => {
@@ -25,13 +29,14 @@ export default class RandomPlanet extends Component {
         });
     }
 
-    updatePlanet() {
+    updatePlanet = () => {
         const id = Math.floor(Math.random() * 20) + 2;
         this.SwapiService
             .getPlanet(id)
             .then(this.onPlanetLoaded)//if we use then we have to have catch 
             .catch(this.onError) //catch error not to get down app
     };
+
     onError = (err) => {
         this.setState({
             error: true,

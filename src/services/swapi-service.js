@@ -7,7 +7,6 @@ class SwapiService {
     async  getResource(url) {
         const res = await fetch(`${this._apiBase}${url}`);
         //404 is not error (the response from the server is received)
-        
         if (!res.ok) {
             throw new Error(`Could not fetch  ${url}` + `, received ${res.status}`)
         }
@@ -45,11 +44,6 @@ class SwapiService {
         return this.getResource(`/starships/${id}`)
     }
 
-    _extractId(item){
-        const idRegExp = /\/([0-9]*)\/$/;
-        return item.url.match(idRegExp)[1];
-    }
-
     _transformPlanet(planet){
         return {
             id: this._extractId(planet),
@@ -75,16 +69,20 @@ class SwapiService {
     }
 
 
-    _transformPerson(person) {
+    _transformPerson = (person) => {
         return {
             id: this._extractId(person),
             name: person.name,
             gender: person.gender,
-            birthYear: person.birthYear,
-            eyeColor: person.eyeColor
+            birthYear: person.birth_year,
+            eyeColor: person.eye_color
         }
     }
-    
+
+    _extractId(item) {
+        const idRegExp = /\/([0-9]*)\/$/;
+        return item.url.match(idRegExp)[1];
+    }
                    
 }
 
