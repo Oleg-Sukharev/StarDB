@@ -1,11 +1,12 @@
 .error{
-  text-align: center;
-  width: 100%;
-  color: #00bc8c;
+	padding: 20px;
+	text-align: center;
+	width: 100%;
+	color: #00bc8c;
 }
 .error img{
-  width: 80px;
-  height: auto;
-  display: block;
-  margin:  0 auto 20px;
+	width: 80px;
+	height: auto;
+	display: block;
+	margin:  0 auto 20px;
 }

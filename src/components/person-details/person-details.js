@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import SwapiService from '../../services/swapi-service'
+import SwapiService from '../../services/swapi-service';
+import Spinner from '../spinner';
+
 
 import './person-details.css';
 
 export default class PersonDetails extends Component {
   swapiService = new SwapiService();
   state = {
-    person : null
+    person : null,
+    laoding: false
   }
   componentDidMount(){
     this.undatePerson();
@@ -15,6 +18,7 @@ export default class PersonDetails extends Component {
     //if we change state it have to be in if block or it will lead to leads to cyclical dependence
 
     if (this.props.personId !== prevProps.personId)  {
+      this.setState({ loading: true })
       this.undatePerson();
     }
   }
@@ -26,8 +30,10 @@ export default class PersonDetails extends Component {
     this.swapiService
         .getPerson(personId)
         .then((person) => {
-          console.log(person);
-          this.setState({person})
+          this.setState({
+            loading: false,
+            person
+          })
         })
   }
   render() {
@@ -36,8 +42,13 @@ export default class PersonDetails extends Component {
           <div className='person-details '>Select a preson from a list </div>
         )
     }
-    const { person:{
+    const {  loading,person:{
             id, name, gender, birthYear, eyeColor}} = this.state;
+    if (loading) {
+      return (
+        <Spinner/>
+      );
+    }
     return (
       <div className="person-details card">
         <img className="person-image"
