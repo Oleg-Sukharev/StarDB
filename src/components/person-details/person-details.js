@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SwapiService from '../../services/swapi-service';
 import Spinner from '../spinner';
+import ErrorButton from '../error-button';
+
 
 
 import './person-details.css';
@@ -9,7 +11,9 @@ export default class PersonDetails extends Component {
   swapiService = new SwapiService();
   state = {
     person : null,
-    laoding: false
+    laoding: false,
+    hasError: false
+
   }
   componentDidMount(){
     this.undatePerson();
@@ -36,6 +40,9 @@ export default class PersonDetails extends Component {
           })
         })
   }
+  componentDidCatch() {
+    this.setState({ hasError: true })
+  }
   render() {
     if (!this.state.person){
         return(
@@ -50,27 +57,29 @@ export default class PersonDetails extends Component {
       );
     }
     return (
-      <div className="person-details card">
-        <img className="person-image"
-          src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} />
-        <div className="card-body">
-          <h4>{name}</h4>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <span className="term">Gender</span>
-              <span>{gender}</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Birth Year</span>
-              <span>{birthYear}</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Eye Color</span>
-              <span>{eyeColor}</span>
-            </li>
-          </ul>
+        <div className="person-details card">
+          <img className="person-image"
+            src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} />
+          <div className="card-body">
+            <h4>{name}</h4>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">
+                <span className="term">Gender</span>
+                <span>{gender}</span>
+              </li>
+              <li className="list-group-item">
+                <span className="term">Birth Year</span>
+                <span>{birthYear}</span>
+              </li>
+              <li className="list-group-item">
+                <span className="term">Eye Color</span>
+                <span>{eyeColor}</span>
+              </li>
+            </ul>
+            <ErrorButton />
+          </div>
         </div>
-      </div>
+     
     )
   }
 }

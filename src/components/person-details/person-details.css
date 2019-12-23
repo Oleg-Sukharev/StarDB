@@ -18,6 +18,10 @@
   margin-right: .5rem;
 }
 
+.person-details .error-button{
+   margin-top: 20px;
+}
+
 @media(max-width: 769px){
 
   .person-details{

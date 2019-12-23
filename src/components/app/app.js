@@ -1,28 +1,21 @@
 import React, { Component } from 'react';
 import Header from '../header';
 import RandomPlanet from '../random-planet';
-import ItemList from '../item-list';
-import PersonDetails from '../person-details';
 import ErrorIndicator from '../error-indicator';
-import ErrorButton from '../error-button'
+import ErrorButton from '../error-button';
+import PeoplePage from '../people-page'
 import './app.css';
 
 export default class  App extends Component {
   state = {
-    selectedPerson: null,
     showRandomPlanet: true,
     hasError: false
   }
-  onPersonSelected = (id) => {
-    this.setState({
-      selectedPerson: id
-    })    
-  };
+
   toggleRandomPlanet = () =>{
     this.setState({
       showRandomPlanet: !(this.state.showRandomPlanet)
     }) 
-    this.foor.bar = 0;
   }
 
   //if we got errors  hook
@@ -50,14 +43,10 @@ export default class  App extends Component {
             <ErrorButton/>
           </div>
         </div>
-        <div className="row mb2">
-          <div className="col-md-6">
-            <ItemList  onItemSelected={this.onPersonSelected}/>
-          </div>
-          <div className="col-md-6">
-            <PersonDetails personId={this.state.selectedPerson}/>
-          </div>
-        </div>
+        <PeoplePage/>
+        <PeoplePage/>
+        <PeoplePage/>
+
       </div>
     );
   }
