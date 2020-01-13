@@ -1,52 +1,52 @@
 import React, { Component } from 'react';
-import SwapiService from '../../services/swapi-service';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
-
 import './item-list.css';
 
 export default class ItemList extends Component {
-    swapiService = new SwapiService();
     state = {
-        peopleList: null,
+        itemList: null,
         error: false,
         loading: true
     }
     componentDidMount() {
-        this.swapiService
-            .getAllPeople()
-            .then((peopleList) => {
+        const { getData } = this.props;
+        getData()
+            .then((itemList) => {
+                console.log(itemList);
                 this.setState({
-                    peopleList,
+                    itemList,
                     loading: false,
                 })
             })
             .catch(this.onError) //catch error not to get down app
     }
-    onError = (err) => {
+    onError = () => {
         this.setState({
             loading :false,
             error: true,
         });
     }
     renderItems(arr) {
-        return arr.map(({ id, name }) => {
+        return arr.map((item) => {
+            const {id} = item
+            const label = this.props.renderItem(item);
             return (
                 <li className="list-group-item"
                     key={id}
                     onClick={() => this.props.onItemSelected(id)}>
-                    {name}
+                    {label}
                 </li>
             );
         });
     }
 
     render() {
-        const { peopleList, loading, error } = this.state;
+        const { itemList, loading, error } = this.state;
         const errorMessage = error ? <ErrorIndicator /> : null;
         const spinner = loading ? <Spinner /> : null;
         const hasData = !(loading || error)
-        const content = hasData ? this.renderItems(peopleList) : null;
+        const content = hasData ? this.renderItems(itemList) : null;
         return (
             <React.Fragment>
                 <ul className="item-list list-group">
