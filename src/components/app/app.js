@@ -54,8 +54,8 @@ export default class  App extends Component {
         itemId={12}
         getData={getPerson}
         getImageUrl={getPersonImage}>
-        <Record field="Gender" label="gender" />
-        <Record field="Eye Color" label="eyeColor" />
+          <Record field="Gender" label="gender" />
+          <Record field="Eye Color" label="eyeColor" />
       </ItemDetails>
     );
 
@@ -64,17 +64,17 @@ export default class  App extends Component {
         itemId={5}
         getData={getStarship}
         getImageUrl={getStarshipImage}>
-        <Record field="Model" label="model" />
-        <Record field="Length" label="length" />
-        <Record field="Cost" label="costInCredits" />
+          <Record field="Model" label="model" />
+          <Record field="Length" label="length" />
+          <Record field="Cost" label="costInCredits" />
       </ItemDetails>
-    );
+    ); 
     
     return (
       <ErrorBoundry>
         <div className='container'>
-          <Row left={personDetails} right={starShipDetails} />
-
+          {/* <Row left={personDetails} right={starShipDetails} /> */}
+          {personList}
           {/* <Header/>
           {planet}
           <div className="row mb2">

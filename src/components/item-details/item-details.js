@@ -25,13 +25,9 @@ export default class itemDetails extends Component {
   }
   componentDidMount() {
     this.updateItem();
-    console.log(this.state.item);
-
   }
+
   componentDidUpdate(prevProps) {
-    console.log(this.state.item);
-    
-    //if we change state it have to be in if block or it will lead to leads to cyclical dependence
     if (this.props.itemId !== prevProps.itemId) {
       this.setState({ loading: true })
       this.updateItem();
@@ -58,7 +54,7 @@ export default class itemDetails extends Component {
     if (!item) {
       return  <div className='person-details'>Select a person from a list</div>
     }
-    const { id,name, gender, birthYear, eyeColor } = item;
+    const { name } = item;
     if (loading) {
       return (
         <Spinner />

@@ -75,7 +75,7 @@ class SwapiService {
             name: startship.name,
             model: startship.model,
             manufacturer: startship.manufacturer,
-            costInCredits: startship.costInCredits,
+            costInCredits: startship.cost_in_credits,
             length: startship.length,
             crew: startship.crew,
             passengers: startship.passengers,
