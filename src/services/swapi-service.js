@@ -59,12 +59,13 @@ class SwapiService {
     }
 
     _transformPlanet = (planet) => {
+        console.log("planet",planet);
         return {
             id: this._extractId(planet),
             name: planet.name,
             population: planet.population,
-            rotationPeriod: planet.rotationPeriod,
-            diametr: planet.diametr
+            rotationPeriod: planet.rotation_period,
+            diametr: planet.diameter
         }
     }
 

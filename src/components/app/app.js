@@ -5,11 +5,16 @@ import ErrorIndicator from '../error-indicator';
 import ErrorButton from '../error-button';
 import PeoplePage from '../people-page';
 import ErrorBoundry from '../error-boundry'
-import ItemList from '../item-list';
-import ItemDetails, { Record } from '../item-details/item-details';
-//two export //dont show error
 import SwapiService from '../../services/swapi-service';
 import Row from '../row';
+import  {
+  PersonList,
+  PlanetList,
+  StarshipList,
+  PersonDetails,
+  PlanetDetails,
+  StarshipDetails
+} from "../sw-components"
 import './app.css';
 
 export default class  App extends Component {
@@ -37,46 +42,24 @@ export default class  App extends Component {
     }
     const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
 
-    const personList = (
-      <ItemList
-        onItemSelected={this.onPersonSelected}
-        getData={this.swapiService.getAllPlanets}
-        renderItem={(item) => item.name}
-      />
-    );
-    const { getPerson,
-            getStarship,
-            getPersonImage,
-            getStarshipImage } = this.swapiService;
-
-    const personDetails = (
-      <ItemDetails 
-        itemId={12}
-        getData={getPerson}
-        getImageUrl={getPersonImage}>
-          <Record field="Gender" label="gender" />
-          <Record field="Eye Color" label="eyeColor" />
-      </ItemDetails>
-    );
-
-    const starShipDetails = (
-      <ItemDetails 
-        itemId={5}
-        getData={getStarship}
-        getImageUrl={getStarshipImage}>
-          <Record field="Model" label="model" />
-          <Record field="Length" label="length" />
-          <Record field="Cost" label="costInCredits" />
-      </ItemDetails>
-    ); 
-    
     return (
       <ErrorBoundry>
         <div className='container'>
           {/* <Row left={personDetails} right={starShipDetails} /> */}
-          {personList}
+          {/* <PersonList
+            renderItem={(item) => item.name}
+          />
+          <PlanetList
+            renderItem={(item) => item.name}
+          />
+          <StarshipList
+            renderItem={(item) => item.name}
+          /> */}
+          <PersonDetails itemId={3}/>
+          <PlanetDetails itemId={10}/>
+          <StarshipDetails itemId={11}/>
+
           {/* <Header/>
-          {planet}
           <div className="row mb2">
             <div className='col-md-12 mb2'>
               <button
@@ -96,7 +79,6 @@ export default class  App extends Component {
             </div>
           </div> */}
           {/* <PeoplePage /> */}
-
         </div>
       </ErrorBoundry>
     );

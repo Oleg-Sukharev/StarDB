@@ -12,11 +12,13 @@ const Record = ({item,field,label}) => {
     </li>
   );
 }
+
 export {
   Record
 }
 
-export default class itemDetails extends Component {
+
+export default class ItemDetails extends Component {
   swapiService = new SwapiService();
   state = {
     item: null,
