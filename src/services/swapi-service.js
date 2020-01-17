@@ -65,7 +65,7 @@ class SwapiService {
             name: planet.name,
             population: planet.population,
             rotationPeriod: planet.rotation_period,
-            diametr: planet.diameter
+            diameter: planet.diameter
         }
     }
 
