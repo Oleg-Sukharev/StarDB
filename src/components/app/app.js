@@ -45,20 +45,13 @@ export default class  App extends Component {
     return (
       <ErrorBoundry>
         <div className='container'>
+          {/* <PersonDetails itemId={3} />
+          <PlanetDetails itemId={10} />
+          <StarshipDetails itemId={11} /> */}
           {/* <Row left={personDetails} right={starShipDetails} /> */}
-          {/* <PersonList
-            renderItem={(item) => item.name}
-          />
-          <PlanetList
-            renderItem={(item) => item.name}
-          />
-          <StarshipList
-            renderItem={(item) => item.name}
-          /> */}
-          <PersonDetails itemId={3}/>
-          <PlanetDetails itemId={10}/>
-          <StarshipDetails itemId={11}/>
-
+          <PersonList/>
+          <PlanetList/>
+          <StarshipList/>
           {/* <Header/>
           <div className="row mb2">
             <div className='col-md-12 mb2'>

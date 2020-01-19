@@ -2,11 +2,11 @@ import React from 'react';
 import './item-list.css';
 
 const  ItemList = (props) => {
-    const { data, onItemSelected, renderItem } = props;
+    const { data, onItemSelected, children: renderLabel } = props;
     const renderItems = (arr) => {
         return arr.map((item) => {
             const { id } = item
-            const label = renderItem(item);
+            const label = renderLabel(item);
             return (
                 <li className="list-group-item"
                     key={id}
@@ -16,13 +16,11 @@ const  ItemList = (props) => {
             );
         });
     }
-    const content = data ? renderItems(data) : null;
+    const items = data ? renderItems(data) : null;
     return (
-        <React.Fragment>
-            <ul className="item-list list-group">
-                {content}
-            </ul>
-        </React.Fragment>
+        <ul className="item-list list-group">
+            {items}
+        </ul>
     );
 }
 export default ItemList;
