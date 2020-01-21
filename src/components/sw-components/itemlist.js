@@ -13,9 +13,9 @@ const {
 const
  renderName = ({name}) => <span>{name}</span> 
 
-const PersonList = withData(withChildFunction(ItemList, renderName), getAllPeople);
-const PlanetList = withData(withChildFunction(ItemList, renderName), getAllPlanets);
-const StarshipList = withData(withChildFunction(ItemList, renderName), getAllStarships);
+const PersonList = withData(withChildFunction(ItemList, renderName));
+const PlanetList = withData(withChildFunction(ItemList, renderName));
+const StarshipList = withData(withChildFunction(ItemList, renderName));
 
 export {
     PersonList,
