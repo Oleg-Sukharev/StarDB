@@ -12,7 +12,10 @@ const {
 } = swapiService;
 const
  renderName = ({name}) => <span>{name}</span> 
+  
 
+
+ 
 const PersonList = withData(withChildFunction(ItemList, renderName));
 const PlanetList = withData(withChildFunction(ItemList, renderName));
 const StarshipList = withData(withChildFunction(ItemList, renderName));
