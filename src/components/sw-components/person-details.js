@@ -16,5 +16,4 @@ const mapMethodsToPros = (swapiService) => {
     }
 }
 
-
 export default withSwapiService(PersonDetails, mapMethodsToPros)

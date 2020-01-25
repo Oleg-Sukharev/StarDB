@@ -48,13 +48,13 @@ export default class  App extends Component {
         <SwapiServiceProvider value={this.swapiService}>
 
         <div className='container'>
-          <PersonDetails itemId={3} />
+          {/* <PersonDetails itemId={3} />
           <PlanetDetails itemId={10} />
-          <StarshipDetails itemId={11} />
+          <StarshipDetails itemId={11} /> */}
           {/* <Row left={personDetails} right={starShipDetails} /> */}
-          {/* <PersonList/>
+          <PersonList/>
           <PlanetList/>
-          <StarshipList/> */}
+          <StarshipList/>
           {/* <Header/>
           <div className="row mb2">
             <div className='col-md-12 mb2'>
