@@ -16,13 +16,14 @@ export default class RandomPlanet extends Component {
     constructor() {
         super();
     }
-    
-    componentDidMount(){
+
+    componentDidMount() {
+        const { updateInterval } = this.props;
         this.updatePlanet();
-        this.interval = setInterval(this.updatePlanet, 3000);
+        this.interval = setInterval(this.updatePlanet, updateInterval);
     }
 
-    componentWillMount(){
+    componentWillMount() {
         clearInterval(this.interval);
     }
 
@@ -49,11 +50,11 @@ export default class RandomPlanet extends Component {
     }
 
     render() {
-        const {planet,loading,error} = this.state;
-        const errorMessage = error ? <ErrorIndicator/> : null;
+        const { planet, loading, error } = this.state;
+        const errorMessage = error ? <ErrorIndicator /> : null;
         const hasData = !(loading || error)
-        const spinner = loading ? <Spinner/> : null;
-        const content = hasData ? <PlanetView planet={planet} />  : null;
+        const spinner = loading ? <Spinner /> : null;
+        const content = hasData ? <PlanetView planet={planet} /> : null;
         // null value just ignored
         return (
             <div className="random-planet jumbotron rounded">
@@ -65,9 +66,29 @@ export default class RandomPlanet extends Component {
             </div>
         );
     }
+    // default props  /// is not the standard
+    // static defaultProps = {
+    //     updateInterval: 10000
+    // }
 }
 
-const PlanetView = ({planet}) =>{
+RandomPlanet.defaultProps = {
+    updateInterval: 10000
+}
+
+///prevent dif bugs
+RandomPlanet.propTypes = {
+    updateInterval: (props,propName,componentName) =>{
+        const value = props[propName];
+        if (typeof value === "number" && !isNaN(value)) {
+            return null;
+        }
+        return new TypeError(`${componentName}: ${propName} must be number`);
+    }
+}
+
+
+const PlanetView = ({ planet }) => {
     const { name, population, rotationPeriod, diametr, id } = planet;
     return (
         //create wripper without creating extra  div (react render can return  one element only)

@@ -6,16 +6,7 @@ import ErrorButton from '../error-button';
 import PeoplePage from '../people-page';
 import ErrorBoundry from '../error-boundry'
 import SwapiService from '../../services/swapi-service';
-import Row from '../row';
 import { SwapiServiceProvider } from "../../components/swapi-service-context"
-import {
-  PersonList,
-  PlanetList,
-  StarshipList,
-  PersonDetails,
-  PlanetDetails,
-  StarshipDetails
-} from "../sw-components"
 import './app.css';
 
 export default class App extends Component {
@@ -41,7 +32,7 @@ export default class App extends Component {
         <ErrorIndicator />
       )
     }
-    const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
+    const planet = this.state.showRandomPlanet ? <RandomPlanet/> : null;
     return (
       <ErrorBoundry>
         <SwapiServiceProvider value={this.swapiService}>
@@ -49,10 +40,6 @@ export default class App extends Component {
             {/* <PersonDetails itemId={3} />
           <PlanetDetails itemId={10} />
           <StarshipDetails itemId={11} /> */}
-            {/* <Header/>
-         
-          <PlanetList/>
-          <StarshipList/> */}
             {/* <div className="row mb2">
             <div className='col-md-12 mb2'>
               <button
@@ -64,8 +51,8 @@ export default class App extends Component {
             </div>
           </div> */}
 
-            {/* <ItemDetails personId={this.state.selectedPerson} /> */}
-
+            <Header />
+            {planet}
             <PeoplePage />
           </div>
         </SwapiServiceProvider>
