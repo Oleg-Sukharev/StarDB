@@ -7,8 +7,8 @@ import PeoplePage from '../people-page';
 import ErrorBoundry from '../error-boundry'
 import SwapiService from '../../services/swapi-service';
 import Row from '../row';
-import {SwapiServiceProvider} from "../../components/swapi-service-context"
-import  {
+import { SwapiServiceProvider } from "../../components/swapi-service-context"
+import {
   PersonList,
   PlanetList,
   StarshipList,
@@ -18,45 +18,42 @@ import  {
 } from "../sw-components"
 import './app.css';
 
-export default class  App extends Component {
+export default class App extends Component {
   swapiService = new SwapiService();
   state = {
     showRandomPlanet: true,
     hasError: false
   }
 
-  toggleRandomPlanet = () =>{
+  toggleRandomPlanet = () => {
     this.setState({
       showRandomPlanet: !(this.state.showRandomPlanet)
-    }) 
+    })
   }
 
   //if we got errors  hook
   componentDidCatch() {
-    this.setState({ hasError: true})
+    this.setState({ hasError: true })
   }
   render() {
     if (this.state.hasError) {
-        return(
-          <ErrorIndicator/>
-        )
+      return (
+        <ErrorIndicator />
+      )
     }
     const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
-
     return (
       <ErrorBoundry>
         <SwapiServiceProvider value={this.swapiService}>
-
-        <div className='container'>
-          {/* <PersonDetails itemId={3} />
+          <div className='container'>
+            {/* <PersonDetails itemId={3} />
           <PlanetDetails itemId={10} />
           <StarshipDetails itemId={11} /> */}
-          {/* <Row left={personDetails} right={starShipDetails} /> */}
-          <PersonList/>
+            {/* <Header/>
+         
           <PlanetList/>
-          <StarshipList/>
-          {/* <Header/>
-          <div className="row mb2">
+          <StarshipList/> */}
+            {/* <div className="row mb2">
             <div className='col-md-12 mb2'>
               <button
                 className="toggle-planet bnt btn-warning btn-lg"
@@ -65,17 +62,12 @@ export default class  App extends Component {
               </button>
               <ErrorButton/>
             </div>
-          </div>
-          <div className="row"> 
-            <div className="col-md-6">
-      
-            </div>
-            <div className="col-md-6">
-              <ItemDetails personId={this.state.selectedPerson} />
-            </div>
           </div> */}
-          {/* <PeoplePage /> */}
-        </div>
+
+            {/* <ItemDetails personId={this.state.selectedPerson} /> */}
+
+            <PeoplePage />
+          </div>
         </SwapiServiceProvider>
       </ErrorBoundry>
     );
