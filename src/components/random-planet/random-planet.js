@@ -89,7 +89,7 @@ RandomPlanet.propTypes = {
 
 
 const PlanetView = ({ planet }) => {
-    const { name, population, rotationPeriod, diametr, id } = planet;
+    const { name, population, rotationPeriod, diameter, id } = planet;
     return (
         //create wripper without creating extra  div (react render can return  one element only)
         <React.Fragment>
@@ -108,7 +108,7 @@ const PlanetView = ({ planet }) => {
                     </li>
                     <li className="list-group-item">
                         <span className="term">Diameter</span>
-                        <span>{diametr}</span>
+                        <span>{diameter}</span>
                     </li>
                 </ul>
             </div>
