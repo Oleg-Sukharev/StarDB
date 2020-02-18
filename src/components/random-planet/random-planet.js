@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import  PropTypes from 'prop-types'
 import SwapiService from '../../services/swapi-service'
 import Spinner from '../spinner/'
 import ErrorIndicator from '../error-indicator'
@@ -70,22 +71,31 @@ export default class RandomPlanet extends Component {
     // static defaultProps = {
     //     updateInterval: 10000
     // }
+
+    //via prop-types
+
+    static propTypes = {
+        updateInterval: PropTypes.number
+    }
 }
 
 RandomPlanet.defaultProps = {
     updateInterval: 10000
 }
 
+
+
+
 ///prevent dif bugs
-RandomPlanet.propTypes = {
-    updateInterval: (props,propName,componentName) =>{
-        const value = props[propName];
-        if (typeof value === "number" && !isNaN(value)) {
-            return null;
-        }
-        return new TypeError(`${componentName}: ${propName} must be number`);
-    }
-}
+// RandomPlanet.propTypes = {
+//     updateInterval: (props,propName,componentName) =>{
+//         const value = props[propName];
+//         if (typeof value === "number" && !isNaN(value)) {
+//             return null;
+//         }
+//         return new TypeError(`${componentName}: ${propName} must be number`);
+//     }
+// }
 
 
 const PlanetView = ({ planet }) => {
