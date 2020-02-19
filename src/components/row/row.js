@@ -14,9 +14,9 @@ const Row = ({ left, right }) => {
     );
 };
 
-Row.propTypes = {
-    left: PropTypes.node,
-    right: PropTypes.node
-}
+// Row.propTypes = {
+//     left: PropTypes.node,
+//     right: PropTypes.node
+// }
 
 export default Row

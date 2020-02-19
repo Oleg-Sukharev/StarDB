@@ -1,16 +1,19 @@
 import React from 'react';
 import ErrorBoundry from '../error-boundry';
-import { PersonList } from "../sw-components"
+import { PersonList,PersonDetails } from "../sw-components"
 import { withRouter } from 'react-router-dom'
 import './people-page.css';
+import Row from '../row'
 
-const PeoplePage = ({history}) =>  {
+const PeoplePage = ({history,match}) =>  {
+  const { id } = match.params;
   return (
     <ErrorBoundry>
-      <PersonList onItemSelected={(itemId) => { 
-        const newPath = `people/${itemId}`;
-        history.push(newPath)
-      }} />
+      <Row
+        left={<PersonList onItemSelected={(id) => history.push(id)} />}
+        right={<PersonDetails itemId={id}/>}
+      />
+    
     </ErrorBoundry>
   )
 }

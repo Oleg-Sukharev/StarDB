@@ -9,10 +9,7 @@ const StarshipPage = ({history}) =>{
   return(
     <ErrorBoundry>
       <StarshipList  
-        onItemSelected={(itemId)=>{
-          const newPath =`/starship/${itemId}`;
-          history.push(newPath)
-        }}/>
+        onItemSelected={(id) => history.push(id) }/>
     </ErrorBoundry>
   )
 }
