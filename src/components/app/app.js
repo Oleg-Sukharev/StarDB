@@ -105,7 +105,6 @@ export default class App extends Component {
           </Router>  
         </SwapiServiceProvider>
       </ErrorBoundry>
-
          /* 
               <button
                 className="toggle-planet bnt btn-warning btn-lg"
